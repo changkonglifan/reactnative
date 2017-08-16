@@ -2,7 +2,8 @@
 import { INIT } from '../store/types';
 
 const initState = {
-    loginIn : true
+    loginIn : true,
+    user : "aaa"
 }
 
 export default function login(state = initState,action ){
@@ -11,7 +12,7 @@ export default function login(state = initState,action ){
             console.log("init");
             return {
                 ...state,
-                loginIn:true
+                user:"bbb"
             }
         default :
             return state;

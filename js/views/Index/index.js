@@ -12,49 +12,32 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
+import {login} from "./../../actions/login"
 
 
 class Main extends Component {
 
   constructor(props){
       super(props);
+      this.press = this.press.bind(this);
   }
-
-
+  press = ()=>{
+    console.log("111");
+    this.props.dispatch(login());
+  }
   render() {
-    let {user} = this.props;
     return (
       <View>
-            aaa
+        <Text onPress={this.press}>{this.props.user}</Text>
       </View>
-      );
-
-  }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-
-function select(store){
-  return {
+    );
   }
 }
-
+function select(store){
+    return {
+        loginIn : store.login.loginIn,
+        user    : store.login.user
+    }
+}
 
 export default connect(select)(Main);
